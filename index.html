@@ -37,19 +37,6 @@
             cursor: pointer;
         }
 
-        .navigation--item-hover-area {
-            z-index: -1;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-
-            width: 120px;
-            height: 120px;
-            background-color: tan;
-            border-radius: 50%;
-        }
-
         .cursor {
             z-index: 2;
             position: fixed;
@@ -82,19 +69,15 @@
     <ul class="navigation">
         <li class="navigation--item">
             <a href="#" class="navigation--item-link">Home</a>
-            <div class="navigation--item-hover-area"></div>
         </li>
         <li class="navigation--item">
             <a href="#" class="navigation--item-link">Products</a>
-            <div class="navigation--item-hover-area"></div>
         </li>
         <li class="navigation--item">
             <a href="#" class="navigation--item-link">Team</a>
-            <div class="navigation--item-hover-area"></div>
         </li>
         <li class="navigation--item">
             <a href="#" class="navigation--item-link">About us</a>
-            <div class="navigation--item-hover-area"></div>
         </li>
     </ul>
 
@@ -147,9 +130,11 @@
                 const kek = Math.pow(event.clientX - originalLeft, 2) + Math.pow(event.clientY - originalTop, 2) <= Math.pow(contactRadius, 2);
                 console.log(i);
 
-                // if (Math.pow(event.clientX - originalLeft, 2) + Math.pow(event.clientY - originalTop, 2) <= Math.pow(contactRadius, 2)) {
-                // const isCursorOverItemArea = event.currentTarget.contains(item.querySelector(".navigation--item-hover-area"));
-                console.log(event.currentTarget);
+                // const isCursorOverItemArea = Math.cos(deltaX) * deltaX - Math.sin(deltaY) * deltaY < contactRadius;
+                const isCursorOverItemArea = 
+                    Math.pow(deltaX * gravityApproximation, 2) + Math.pow(deltaY * gravityApproximation, 2)
+                    <= Math.pow(contactRadius, 2);
+                console.log( Math.pow(deltaX * gravityApproximation, 2) + Math.pow(deltaY * gravityApproximation, 2));
                 if (isCursorOverItemArea) {
                     item.style.left = `${-deltaX * gravityApproximation}px`;
                     item.style.top = `${-deltaY * gravityApproximation}px`;
