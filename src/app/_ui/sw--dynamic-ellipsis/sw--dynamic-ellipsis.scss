@@ -1,0 +1,11 @@
+.sw--dynamic-ellipsis {
+    position: relative;
+
+    &--points {
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        transform: translate(100%, -50%);
+    }
+}
+
