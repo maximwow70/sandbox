@@ -1,6 +1,6 @@
 @font-face {
-    font-family: navigation;
-    src: url("./assets/fonts/PZ_Raleigh_bold.woff");
+    font-family: main;
+    src: url("./assets/fonts/LEIXO-Bold.ttf");
 }
 
 * {
@@ -26,6 +26,8 @@ body {
     background: linear-gradient(45deg, rgba(54, 54, 54, 1) 0%, rgba(56, 56, 56, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363636', endColorstr='#383838', GradientType=1); */
     color: #fff;
+    font-family: main, Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
 
     overflow: hidden;
 }
@@ -58,7 +60,6 @@ body {
 
 /* #region choice */
 .sw--choice {
-    font-family: navigation, Arial, Helvetica, sans-serif;
     text-align: center;
 }
 
@@ -66,13 +67,6 @@ body {
     position: relative;
     display: inline-block;
     font-size: 20px;
-}
-.sw--choice--title:after {
-    position: absolute;
-    right: 0px;
-    top: 50%;
-    transform: translate(100%, -50%);
-    content: "..";
 }
 
 .sw--choice--option-list {
@@ -87,7 +81,6 @@ body {
     box-sizing: border-box;
     width: 180px;
     height: 180px;
-    padding-left: 15px;
     border-radius: 50%;
 
     line-height: 180px;
@@ -126,7 +119,6 @@ body {
     max-width: 1400px;
     padding: 100px;
 
-    font-family: navigation, Arial, Helvetica, sans-serif;
     font-size: 24px;
 
     list-style: none;
