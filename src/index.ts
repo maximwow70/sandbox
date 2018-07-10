@@ -1,38 +1,46 @@
+import "./styles.scss";
+
+function getHtmlElementList(element, selector): HTMLElement[] {
+    return Array.prototype.slice.call(element.querySelectorAll(selector));
+}
 
 class CustomCursor {
+    private _listeners: any[] = [];
+    private _element = null;
+    private _canClick = true;
+
     constructor(element) {
-        this.listeners = [];
-        this.element = element;
-        this.canClick = true;
-        var cursorElementSize = this.element.getBoundingClientRect();
+        this._element = element;
+        var cursorElementSize = this._element.getBoundingClientRect();
 
         window.addEventListener("mousemove", event => {
-            this.element.style.left = `${Number(event.clientX) - cursorElementSize.width / 2}px`;
-            this.element.style.top = `${Number(event.clientY) - cursorElementSize.height / 2}px`;
-            this.listeners.map(l => l(event));
+            this._element.style.display = "inline-block";
+            this._element.style.left = `${Number(event.clientX) - cursorElementSize.width / 2}px`;
+            this._element.style.top = `${Number(event.clientY) - cursorElementSize.height / 2}px`;
+            this._listeners.map(l => l(event));
         });
         window.addEventListener("click", event => this.onClick());
     }
 
-    subscribe(listener) {
-        this.listeners.push(listener);
+    public subscribe(listener): void {
+        this._listeners.push(listener);
     }
 
-    addClass(className) {
-        this.element.classList.add(className);
+    public addClass(className): void {
+        this._element.classList.add(className);
     }
 
-    removeClass(className) {
-        this.element.classList.remove(className);
+    public removeClass(className): void {
+        this._element.classList.remove(className);
     }
 
-    onClick() {
-        if (this.canClick) {
-            this.canClick = false;
+    public onClick(): void {
+        if (this._canClick) {
+            this._canClick = false;
             this.addClass("clicked");
             setTimeout(() => {
                 this.removeClass("clicked");
-                this.canClick = true;
+                this._canClick = true;
             }, 1000);
         }
     }
@@ -42,15 +50,22 @@ const DEFAULT_CONTACT_RADIUS = 70;
 const DEFAULT_GRAVITY_APPROXIMATION = 0.6;
 
 class AliveItemList {
+    private _cursor = null;
 
-    constructor(cursor, itemList, contactRadius, gravityApproximation) {
+    private _itemList = [];
+
+    private _contactRadius = null;
+    private _gravityApproximation = null;
+
+    constructor(cursor, itemList, contactRadius = DEFAULT_CONTACT_RADIUS, gravityApproximation = DEFAULT_GRAVITY_APPROXIMATION) {
         this._cursor = cursor;
 
         this._itemList = itemList;
-        this._contactRadius = contactRadius || DEFAULT_CONTACT_RADIUS;
-        this._gravityApproximation = gravityApproximation || DEFAULT_GRAVITY_APPROXIMATION;
+        
+        this._contactRadius = contactRadius;
+        this._gravityApproximation = gravityApproximation;
 
-        cursor.subscribe(event => this.checkItems(event));
+        this._cursor.subscribe(event => this.checkItems(event));
     }
 
     setItemPosition(item, deltaX, deltaY) {
@@ -64,7 +79,7 @@ class AliveItemList {
     }
 
     checkItems(event) {
-        const isCursorOverSomeItem = [...this._itemList].some((item, index, itemList) => {
+        const isCursorOverSomeItem = this._itemList.some((item, index, itemList) => {
             const itemSize = item.getBoundingClientRect();
             const deltaX = (itemSize.left + itemSize.width / 2) - event.clientX;
             const deltaY = (itemSize.top + itemSize.height / 2) - event.clientY;
@@ -92,8 +107,11 @@ class AliveItemList {
 
 class ScrollingSectionList {
 
+    private _sectionList = [];
+    private _selectedSection = null;
+
     constructor(sectionList) {
-        this._sectionList = [...sectionList];
+        this._sectionList = sectionList;
         this._selectedSection = this._sectionList[0];
 
         window.addEventListener("scroll", event => event.preventDefault());
@@ -119,15 +137,16 @@ class ScrollingSectionList {
 
 window.addEventListener("load", () => {
     const cursor = new CustomCursor(document.querySelector(".sw--cursor"));
-    const itemList = document.querySelectorAll(".navigation--item");
+    const itemList: HTMLElement[] = getHtmlElementList(document, ".navigation--item");
 
     const itemSizes = itemList[0].getBoundingClientRect();
     const factor = 0.3;
     const aliveItemList = new AliveItemList(
         cursor,
         itemList,
-        Math.max(parseInt(itemSizes.width) * factor, parseInt(itemSizes.height) * factor)
+        Math.max(itemSizes.width * factor, itemSizes.height * factor)
     );
 
-    const scrollingSectionList = new ScrollingSectionList(document.querySelectorAll(".sw--section"));
+    const sectionList: HTMLElement[] = getHtmlElementList(document, ".sw--section");
+    const scrollingSectionList = new ScrollingSectionList(sectionList);
 });
