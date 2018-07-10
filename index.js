@@ -91,7 +91,7 @@ class AliveItemList {
 };
 
 class ScrollingSectionList {
-    
+
     constructor(sectionList) {
         this._sectionList = [...sectionList];
         this._selectedSection = this._sectionList[0];

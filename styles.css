@@ -123,6 +123,7 @@ body {
 
     box-sizing: border-box;
     width: 100%;
+    max-width: 1400px;
     padding: 100px;
 
     font-family: navigation, Arial, Helvetica, sans-serif;
