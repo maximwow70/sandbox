@@ -104,7 +104,7 @@ module.exports = env => {
                     })
                 },
                 {
-                    test: /\.woff2?$|\.ttf$|\.eot$|\.svg$|\.png|\.jpe?g|\.gif$/,
+                    test: /\.woff2?$|\.ttf$|\.eot$|\.otf$|\.svg$|\.png|\.jpe?g|\.gif$/,
                     loader: "file-loader",
                     options: {
                         outputPath: "./assets/", // relative to dist

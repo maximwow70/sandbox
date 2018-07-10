@@ -14,7 +14,7 @@ class CustomCursor {
         var cursorElementSize = this._element.getBoundingClientRect();
 
         window.addEventListener("mousemove", event => {
-            this._element.style.display = "inline-block";
+            this._element.style.opacity = "1";
             this._element.style.left = `${Number(event.clientX) - cursorElementSize.width / 2}px`;
             this._element.style.top = `${Number(event.clientY) - cursorElementSize.height / 2}px`;
             this._listeners.map(l => l(event));
@@ -147,6 +147,6 @@ window.addEventListener("load", () => {
         Math.max(itemSizes.width * factor, itemSizes.height * factor)
     );
 
-    const sectionList: HTMLElement[] = getHtmlElementList(document, ".sw--section");
+    const sectionList: HTMLElement[] = getHtmlElementList(document, ".sw--section-list--section");
     const scrollingSectionList = new ScrollingSectionList(sectionList);
 });

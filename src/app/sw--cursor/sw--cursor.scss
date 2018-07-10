@@ -2,6 +2,7 @@
     z-index: 100;
     position: fixed;
 
+    display: inline-block;
     width: 30px;
     height: 30px;
     background-color: transparent;
@@ -14,29 +15,29 @@
     will-change: left, top, background-color;
     pointer-events: none;
 
-    display: none;
-}
+    opacity: 0;
 
-.sw--cursor.clicked {
-    animation: cursorClicked 1s ease-out forwards;
-}
-
-.sw--cursor.pointer {
-    background-color: rgba(255, 255, 255, 0.15);
-    cursor: pointer;
-}
-
-@keyframes cursorClicked {
-    0% {
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    &.clicked {
+        animation: cursorClicked 1s ease-out forwards;
     }
-    50% {
-        border: 1px solid rgba(255, 255, 255, 0.8);
-        box-shadow: 0 0 50px rgba(255, 255, 255, 0.6);
+
+    &.pointer {
+        background-color: rgba(255, 255, 255, 0.15);
+        cursor: pointer;
     }
-    100% {
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+
+    @keyframes cursorClicked {
+        0% {
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        50% {
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.6);
+        }
+        100% {
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
     }
 }

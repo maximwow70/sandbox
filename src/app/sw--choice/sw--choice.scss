@@ -1,0 +1,48 @@
+
+.sw--choice {
+    text-align: center;
+
+    &--title {
+        display: inline-block;
+        font-size: 20px;
+    }
+
+    &--option-list {
+        margin-bottom: 20px;
+    }
+
+    &--option {
+        margin: 0 20px;
+    
+        display: inline-block;
+        vertical-align: middle;
+    
+        box-sizing: border-box;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+    
+        line-height: 180px;
+        font-size: 28px;
+        text-align: center;
+    
+        transition: 0.3s ease-out;
+
+        &.dark {
+            background-color: rgba(214, 8, 56, 0.8);
+            box-shadow: 0 0 40px rgba(214, 8, 56, 0.5);
+
+            &:hover {
+                box-shadow: 0 0 60px rgba(214, 8, 56, 0.7);
+            }
+        }
+        &.light {
+            background-color: rgba(45, 138, 233, 0.8);
+            box-shadow: 0 0 40px rgba(45, 138, 233, 0.5);
+
+            &:hover {
+                box-shadow: 0 0 60px rgba(45, 138, 233, 0.7);
+            }
+        }
+    }
+}
