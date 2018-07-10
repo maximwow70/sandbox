@@ -107,7 +107,10 @@ module.exports = env => {
                     test: /\.woff2?$|\.ttf$|\.eot$|\.svg$|\.png|\.jpe?g|\.gif$/,
                     loader: "file-loader",
                     options: {
-                        outputPath: __dirname + "/dist/assets/"
+                        outputPath: "./assets/", // relative to dist
+                        name(file) {
+                            return isDevelopment ? "[name].[ext]" : "[hash].[ext]";
+                        }
                     }
                 },
                 {
@@ -149,7 +152,7 @@ module.exports = env => {
                     ignore: ["index.html"]
                 },
                 { from: "./src/index.html", to: "./index.html" },
-                { from: "assets/**/*", to: "./", context: "./src/" } // todo: replace with file loader
+                // { from: "assets/**/*", to: "./", context: "./src/" } // todo: replace with file loader
             ], {})
             // new LiveReloadPlugin()
         ],
