@@ -1,0 +1,19 @@
+.header {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 50px;
+    display: table;
+
+    color: #333;
+}
+.header--logo,
+.header--navigation {
+    display: table-cell;
+    vertical-align: middle;
+}
+.header--logo {
+    width: 1px;
+}
+.header--navigation {
+    text-align: right;
+}

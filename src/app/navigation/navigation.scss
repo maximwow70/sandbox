@@ -1,0 +1,23 @@
+.navigation {
+    &--item-list {
+        list-style: none;
+    }
+    &--item {
+        display: inline-block;
+        vertical-align: middle;
+
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+    }
+    &--item-link {
+        color: #333;
+        text-decoration: none;
+
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+            color: orangered;
+        }
+    }
+}

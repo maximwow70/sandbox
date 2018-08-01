@@ -12,8 +12,7 @@
         "dev-build": "webpack --env.NODE_ENV=dev",
         "prod-build": "webpack --env.NODE_ENV=prod"
     },
-    "dependencies": {
-    },
+    "dependencies": {},
     "devDependencies": {
         "autoprefixer": "^8.6.3",
         "babel-core": "^6.26.0",
