@@ -1,0 +1,41 @@
+@import "./app/sw--cursor/sw--cursor";
+@import "./app/sw--parallax/sw--parallax";
+@import "./app/_ui/sw--dynamic-ellipsis/sw--dynamic-ellipsis";
+
+@import "./app/sw--section-list/sw--section-list";
+@import "./app/sw--choice/sw--choice";
+@import "./app/sw--item-list/sw--item-list";
+
+@font-face {
+    font-family: main;
+    src: url("./assets/fonts/freeline/FreeLine.eot");
+    src: url("./assets/fonts/freeline/FreeLine.eot?#iefix") format("embedded-opentype"),
+        url("./assets/fonts/freeline/FreeLine.woff") format("woff"),
+        url("./assets/fonts/freeline/FreeLine.ttf") format("truetype"),
+        url("./assets/fonts/freeline/FreeLine.svg#BlissPro-Medium") format("svg");
+}
+
+@font-face {
+    font-family: stargaze;
+    src: url("./assets/fonts/ONEDAY.otf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    color: #fff;
+    font-family: stargaze, Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+
+    overflow: hidden;
+}

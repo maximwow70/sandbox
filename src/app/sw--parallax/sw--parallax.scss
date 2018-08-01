@@ -1,0 +1,40 @@
+.sw--parallax {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: url("./assets/images/background1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #111;
+
+    &--cover {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(#000, 0.35);
+
+        transition: background-color 0.3s ease-out;
+    }
+}
+
+$dark-color: darken(rgb(214, 8, 56), 45);
+.sw--dark-side {
+    .sw--parallax {
+        &--cover {
+            background-color: rgba($dark-color, 0.6);
+        }
+    }
+}
+
+$light-color: darken(rgb(45, 138, 233), 45);
+.sw--light-side {
+    .sw--parallax {
+        &--cover {
+            background-color: rgba($light-color, 0.1);
+        }
+    }
+}
